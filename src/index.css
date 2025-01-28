@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Nadbar{
+  background-color: beige;
+  display: grid;
+  grid-template-columns: 1fr ,1fr ;
+  grid-template-rows: 1fr,1fr;
+}
+.navegar{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+#boton-nadbar{
+  margin: 10px;
+}
+
+.navegar{
+  font-size: 20px;
+  margin: 20px;
+}
+
+.imgLogo{
+  width: 100px;  
+  height: auto; 
+  margin-top: -60px;
+}
+
+.imgCarrito{
+  width: 50px;  
+  height: auto; 
+}
+
+.carrito{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 250px;
+}
