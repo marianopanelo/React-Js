@@ -1,18 +1,19 @@
-
-import Nadbar from "./Nadbar/Nadbar"
 import Footer from "./Footer/Footer"
 import Home from "./Home/Home"
+import Navbar from "./Navbar/Navbar"
+
 
 function App() {
 
   return(
     <div>
-      <Nadbar/>
+      <Navbar/>
       <Home/>
       <Footer/>
 
     </div>
   ) 
   }
+
 
 export default App

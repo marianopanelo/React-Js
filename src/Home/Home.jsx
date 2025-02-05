@@ -1,12 +1,12 @@
-import Productos from "./Productos/Productos"
-Productos
-const Home = () => {
-    return(
-    <div>
-    <p>aca van los productos</p>
-    <Productos/>
-    </div>
-    )
-} 
+import ItemListContainer from "./ItemListContainer/ItemListContainer";
 
-export default Home
+const Home = () => {
+  return (
+    <div>
+      <p>aca van los productos</p>
+      <ItemListContainer />
+    </div>
+  );
+};
+
+export default Home;
