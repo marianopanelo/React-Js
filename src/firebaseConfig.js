@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7KVEzYHcGEwaXL2gniEHTkn_3NxS56JM",
-  authDomain: "react-panelo.firebaseapp.com",
-  projectId: "react-panelo",
-  storageBucket: "react-panelo.firebasestorage.app",
-  messagingSenderId: "149481235962",
-  appId: "1:149481235962:web:2c6a6f0d6354b25c34f043"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCHET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
