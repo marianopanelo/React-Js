@@ -1,12 +1,19 @@
-import carrito from "../../Img/img/carrito1.png";
+import { useContext } from "react";
+import carritoImagen from "../../Img/img/carrito1.png";
+import { CarritoContext } from "../../../Context/CarritoContext";
+
 
 const Cartwidjet = () => {
+
+  let {totalProductos} =  useContext(CarritoContext)
+
+
   return (
     <div className="carrito">
       <button>
-        <img src={carrito} alt="carrito" className="imgCarrito" />
+        <img src={carritoImagen} alt="carrito" className="imgCarrito" />
       </button>
-      <h2>0</h2>
+      <h2>{totalProductos}</h2>
     </div>
   );
 };

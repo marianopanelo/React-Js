@@ -211,3 +211,13 @@ a {
 .boton_filtro:hover {
   background-color: #2980b9;
 }
+
+
+
+.imagen-carrito {
+  width: 80px;   /* Ajusta el tamaño según prefieras */
+  height: auto;  /* Mantiene la proporción de la imagen */
+  border-radius: 5px;  /* Esquinas redondeadas (opcional) */
+  margin: 5px;   /* Espaciado entre imágenes */
+  object-fit: cover;  /* Ajusta la imagen sin distorsionarla */
+}

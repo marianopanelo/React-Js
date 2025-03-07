@@ -7,7 +7,6 @@ const FetchingData = () => {
         name: "Mariano"
     };
 
-    console.log(data);
     
     return (
         <div>

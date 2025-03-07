@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CarritoContext } from "../../../Context/CarritoContext";
+import { toast } from "sonner";
 
-// eslint-disable-next-line react/prop-types
-const BotonCompra = ( { producto } ) => {
+const BotonCompra = ({ producto }) => {
+  const { agregarACarrito } = useContext(CarritoContext);
   const [counter, setCounter] = useState(1);
-
-  let carrito = []
-
   const sumar = () => {
     if (counter < producto.stock) {
       setCounter(counter + 1);
     } else {
-      alert("No tenemos tanto stock disponible");
+      toast.error("No hay suficiente stock");
     }
   };
 
@@ -18,27 +17,23 @@ const BotonCompra = ( { producto } ) => {
     if (counter > 1) {
       setCounter(counter - 1);
     } else {
-      alert("No puede comprar 0 cosas");
+      toast.error("No puede comprar 0 cosas");
     }
   };
 
   const eliminar = () => setCounter(0);
- 
-  const onAdd = () => {
-    console.log("agregar al carrito");
-    console.log(producto);
-    console.log("cantidad comprada = " + counter);
-    let precioPorProductos = (producto.price * counter)
-    let productoCarrito = {...producto,
-      cantidadComprada : counter,
-      precioPorLosProductos : precioPorProductos
-    }
-    carrito.push(productoCarrito)
-    console.log(carrito);
-    
 
+  const onAdd = () => {
+    let precioPorProductos = producto.price * counter;
+    let productoCarrito = {
+      ...producto,
+      cantidadComprada: counter,
+      precioPorLosProductos: precioPorProductos,
+    };
+    
+    agregarACarrito(productoCarrito);
+    setCounter(0);
   };
-   
 
   return (
     <div>
@@ -46,8 +41,7 @@ const BotonCompra = ( { producto } ) => {
       <button onClick={sumar}>Sumar</button>
       <button onClick={restar}>Restar</button>
       <button onClick={eliminar}>Eliminar</button>
-      <button onClick={onAdd}>agregar al carrito</button>
-
+      <button onClick={onAdd}>Agregar al carrito</button>
     </div>
   );
 };

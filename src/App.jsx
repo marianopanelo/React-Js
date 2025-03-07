@@ -8,6 +8,10 @@ import { BrowserRouter, Route, Routes } from "react-router"
 import { Contactenos } from "./Component/Pages/Contactenos/Contactenos"
 import { Ubicacion } from "./Component/Pages/ubicacion/ubicacion"
 import NotFound from "./Component/Pages/Erro/Error"
+import Carrito from "./Component/Pages/Carrito/Carrito"
+import Checkout from "./Component/Pages/Checkout/Checkout"
+import { CarritoContextExport } from "./Context/CarritoContext"
+import { Toaster } from "sonner"
 
 
 
@@ -16,19 +20,23 @@ function App() {
   return(
 
     <BrowserRouter>
-      <Navbar/>
-      <Routes>
-        <Route path="" element={<Home/>}/>
-        <Route path="/productos" element={<ItemListContainer/>}/>
-        <Route path="/ubicacion" element={<Ubicacion/>}/>
-        <Route path="/contactenos" element={<Contactenos/>}/>
-        <Route path="/producto_detalle/:id" element={<ItemDetail/>}/>
-        <Route path="/categoria/:category" element={<ItemListContainer/>}/>
-        <Route path="/carrito" element={<h2> mi carrito </h2>}/>
-        <Route path="/usuarios" element={<FetchingData/>}/>
-        <Route path="/*" element={<NotFound/>}/>
-      </Routes>
-      <Footer/>
+      <CarritoContextExport>
+        <Toaster duration={1500} richColors/>
+        <Navbar/>
+        <Routes>
+          <Route path="" element={<Home/>}/>
+          <Route path="/productos" element={<ItemListContainer/>}/>
+          <Route path="/ubicacion" element={<Ubicacion/>}/>
+          <Route path="/contactenos" element={<Contactenos/>}/>
+          <Route path="/producto_detalle/:id" element={<ItemDetail/>}/>
+          <Route path="/categoria/:category" element={<ItemListContainer/>}/>
+          <Route path="/carrito" element={<Carrito/>}/>
+          <Route path="/usuarios" element={<FetchingData/>}/>
+          <Route path="/Checkout" element={<Checkout/>}/>
+          <Route path="/*" element={<NotFound/>}/>
+        </Routes>
+        <Footer/>
+      </CarritoContextExport>
     </BrowserRouter>
   ) 
   }

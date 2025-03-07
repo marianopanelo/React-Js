@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router";
 import BotonCompra from "../BotonCompra/BotonCompra";
-import "./ProductCard.css"; // Importamos el CSS externo
+import "./ProductCard.css"; 
 
 const ProductCard = ({ id, title, price, stock, category, description, imageURL }) => {
   return (
@@ -10,7 +10,8 @@ const ProductCard = ({ id, title, price, stock, category, description, imageURL 
       <div className="product-info">
         <h2 className="product-title">{title}</h2>
         <p className="product-price">Precio: ${price}</p>
-        <p className="product-stock">id: {id}</p>
+        <p className="product-stock">stock: {stock}</p>
+
         <BotonCompra producto={{ id, title, price, stock, category, description, imageURL }} />
         <button><Link to={`/producto_detalle/${id}`}>Ver Detalle</Link></button>
         </div>

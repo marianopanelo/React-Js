@@ -1,18 +1,40 @@
 import { useState,useEffect } from "react"
-import { Products } from "../../products"
+//import { Products } from "../../products"
 import BotonCompra from "../BotonCompra/BotonCompra";
 import { Link, useParams } from "react-router";
+import ItemListContainer from "../../Pages/ItemListContainer/ItemListContainer";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
+
+
+
 
 export const ItemDetail = () => {
-    let {id} = useParams();
-    
+  let { id } = useParams();
+  const Products = ItemListContainer.listaProductos
 
     const [itemParaCarrito , setItemParaCarrito] = useState({})
 
-    useEffect (()=>{
-        let productoSeleccionado = Products.find((Products)=>Products.id === id)
-        setItemParaCarrito(productoSeleccionado)
-    },[id])
+
+
+    useEffect(() => {
+      const obtenerProducto = async () => {
+          const productoRef = doc(db, "products", id);
+          const productoSnap = await getDoc(productoRef);
+
+          if (productoSnap.exists()) {
+              setItemParaCarrito({ id: productoSnap.id, ...productoSnap.data() });
+          } else {
+              console.error("Producto no encontrado");
+          }
+      };
+
+      obtenerProducto();
+  }, [id]);
+
+  if (!itemParaCarrito) {
+      return <h2>Cargando producto...</h2>;
+  }
 
 
   return (
